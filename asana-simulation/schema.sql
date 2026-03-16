@@ -2,6 +2,7 @@ PRAGMA foreign_keys = OFF;
 
 DROP TABLE IF EXISTS task_tags;
 DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS attachments;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS custom_field_values;
 DROP TABLE IF EXISTS custom_field_definitions;
@@ -94,6 +95,19 @@ CREATE TABLE comments (
     created_at TIMESTAMP,
     FOREIGN KEY (task_id) REFERENCES tasks(task_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+CREATE TABLE attachments (
+    attachment_id TEXT PRIMARY KEY,
+    task_id TEXT NOT NULL,
+    uploaded_by TEXT NOT NULL,
+    file_name TEXT NOT NULL,
+    file_type TEXT NOT NULL,
+    file_size_kb INTEGER NOT NULL,
+    created_at TIMESTAMP,
+    FOREIGN KEY (task_id) REFERENCES tasks(task_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
 );
 
 

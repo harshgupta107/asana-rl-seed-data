@@ -35,8 +35,23 @@ This file contains the prompt structures and templates used to simulate LLM-gene
 - **Detailed Descriptions (50%):** Includes "Context", "Requirements", and "Acceptance Criteria" bullet points.
 - **Empty (20%):** Simulates quick, on-the-fly task creation.
 
-## 3. User Role Distribution
+## 4. Attachment Generation Strategy
 
-- **Admins (5%):** Full access privileges.
-- **Members (90%):** Standard access.
-- **Guests (5%):** Limited access (simulating external contractors).
+Asana tasks support file attachments. The simulation generates realistic attachments
+with the following distribution:
+
+| File Type | Extension | Probability |
+|-----------|-----------|-------------|
+| PDF       | .pdf      | ~40%        |
+| PNG image | .png      | ~20%        |
+| JPEG image| .jpg      | ~15%        |
+| Word doc  | .docx     | ~10%        |
+| Excel     | .xlsx     | ~8%         |
+| Video     | .mp4      | ~4%         |
+| Archive   | .zip      | ~3%         |
+
+- **Coverage:** ~30% of project tasks receive 1-3 attachments.
+- **Uploader:** A random workspace member is chosen as the uploader.
+- **File size:** Sampled from a realistic per-type range (KB).
+- **Yes, PDFs are fully supported** as the most common attachment type in the simulation.
+

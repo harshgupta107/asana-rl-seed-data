@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.models.db import DatabaseManager
-from src.generators import users, projects, tasks
+from src.generators import users, projects, tasks, attachments
 
 DB_PATH = "output/asana_simulation.sqlite"
 SCHEMA_PATH = "schema.sql"
@@ -33,6 +33,9 @@ def main():
     
     # D. Tasks
     tasks.generate_tasks(db.cursor, project_data, user_ids)
+
+    # E. Attachments (PDFs and other file types on tasks)
+    attachments.generate_attachments(db.cursor, user_ids)
 
     # 3. Finish
     db.commit()
