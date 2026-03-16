@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Generated database output
+asana-simulation/output/
+
+# Virtual environments
+.venv/
+venv/
+env/
